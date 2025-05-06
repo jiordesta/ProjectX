@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcf58bd3ln6bh"]
+
+[ext_resource type="Texture2D" uid="uid://wqerccml6yqg" path="res://test/sprite.test.png" id="1_h5wed"]
+[ext_resource type="PackedScene" uid="uid://bufdi433rsqod" path="res://scenes/custom_camera.tscn" id="2_x3cjw"]
+
+[node name="Entity" type="RigidBody2D"]
+
+[node name="Textures" type="Node2D" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="Textures"]
+texture = ExtResource("1_h5wed")
+hframes = 2
+vframes = 3
+frame = 4
+
+[node name="Body" type="Sprite2D" parent="Textures"]
+position = Vector2(0, -4)
+texture = ExtResource("1_h5wed")
+hframes = 2
+vframes = 3
+
+[node name="Head" type="Sprite2D" parent="Textures"]
+position = Vector2(0, -11)
+texture = ExtResource("1_h5wed")
+hframes = 2
+vframes = 3
+frame = 2
+
+[node name="Item" type="Node2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="Weapon" type="Node2D" parent="Item"]
+position = Vector2(12, 0)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Item/Weapon"]
+rotation = 0.785398
+texture = ExtResource("1_h5wed")
+hframes = 2
+vframes = 3
+frame = 1
+
+[node name="CustomCamera" parent="." instance=ExtResource("2_x3cjw")]
+zoom = Vector2(4, 4)
