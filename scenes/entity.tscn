@@ -1,44 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcf58bd3ln6bh"]
+[gd_scene load_steps=7 format=3 uid="uid://dcf58bd3ln6bh"]
 
 [ext_resource type="Texture2D" uid="uid://wqerccml6yqg" path="res://test/sprite.test.png" id="1_h5wed"]
+[ext_resource type="Texture2D" uid="uid://dsgqbw2rfuq3o" path="res://test/entity.png" id="2_opwtf"]
 [ext_resource type="PackedScene" uid="uid://bufdi433rsqod" path="res://scenes/custom_camera.tscn" id="2_x3cjw"]
+[ext_resource type="PackedScene" uid="uid://cq7wwkw2h07s6" path="res://scenes/state_machine.tscn" id="3_1umq7"]
+[ext_resource type="Script" path="res://test/item.gd" id="3_gq7ym"]
+[ext_resource type="Script" path="res://test/samplestatemachiqne.gd" id="4_mqxgd"]
 
 [node name="Entity" type="RigidBody2D"]
 
 [node name="Textures" type="Node2D" parent="."]
 
 [node name="Shadow" type="Sprite2D" parent="Textures"]
+modulate = Color(1, 1, 1, 0.392157)
 texture = ExtResource("1_h5wed")
 hframes = 2
 vframes = 3
 frame = 4
 
-[node name="Body" type="Sprite2D" parent="Textures"]
-position = Vector2(0, -4)
-texture = ExtResource("1_h5wed")
-hframes = 2
+[node name="Sprite2D" type="Sprite2D" parent="Textures"]
+position = Vector2(0, -8)
+texture = ExtResource("2_opwtf")
+hframes = 3
 vframes = 3
-
-[node name="Head" type="Sprite2D" parent="Textures"]
-position = Vector2(0, -11)
-texture = ExtResource("1_h5wed")
-hframes = 2
-vframes = 3
-frame = 2
 
 [node name="Item" type="Node2D" parent="."]
 position = Vector2(0, -3)
+script = ExtResource("3_gq7ym")
 
 [node name="Weapon" type="Node2D" parent="Item"]
-position = Vector2(12, 0)
+position = Vector2(11, 0)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Item/Weapon"]
+[node name="Sprite2D2" type="Sprite2D" parent="Item/Weapon"]
 rotation = 0.785398
+scale = Vector2(-1, 1)
 texture = ExtResource("1_h5wed")
 hframes = 2
 vframes = 3
-frame = 1
+frame = 3
 
 [node name="CustomCamera" parent="." instance=ExtResource("2_x3cjw")]
 zoom = Vector2(4, 4)
+
+[node name="StateMachine" parent="." instance=ExtResource("3_1umq7")]
+script = ExtResource("4_mqxgd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -36.0
+offset_right = 20.0
+offset_bottom = -13.0
+horizontal_alignment = 1

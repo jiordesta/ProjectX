@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cq7wwkw2h07s6"]
+
+[node name="StateMachine" type="Node"]
+
+[node name="Logic" type="Node" parent="."]
+
+[node name="Texture" type="Node" parent="."]
