@@ -6,7 +6,8 @@ var logic = {
 	'states': {}
 }
 
-func initializeLogicStateMachine(states, initial):
+#TODO NEEDS TO BE REFACTORED
+func initializeStates(states, initial):
 	for state in states:
 		var new_state: State = state.value.new()
 		new_state.entity = get_parent()

@@ -1,4 +1,6 @@
 extends Node
+class_name GameEnums
  
-enum StatActions { INCREASE, DECREASE, RESET }
-enum ModifySpeedTypes { FORWARD, BACKWARD, STOP }
+enum STATACTIONS { INCREASE, DECREASE, RESET }
+enum PROPERTYACTIONS { INCREASE, DECREASE, RESET }
+enum SPEEDTYPES { FORWARD, BACKWARD, STOP }

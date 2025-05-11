@@ -5,23 +5,16 @@ func Exit():
 	pass
 func Enter():
 	if not entity: return
-	entity.currentLogicState = self
+	entity.updatePlayerProperty('logic_state',self)
+	entity.playAnimation('run')
 func Update(delta: float):
 	if not entity: return
 
 	updateInputs()
 
-	if down || left || right || up:
-		if up:
-			direction.y -= 1
-		if down:
-			direction.y += 1
-		if left:
-			direction.x -= 1
-		if right:
-			direction.x += 1
-	else:
+	if !down and !left and !right and !up:
 		Transition.emit(self, 'idle')
+
 func PhysicsUpdate(delta: float):
 	if not entity: return
-	entity.navigate(direction,delta,Enum.ModifySpeedTypes.FORWARD,100,20)
+	entity.controlledNavigate(delta,Enum.SPEEDTYPES.FORWARD,100,20)

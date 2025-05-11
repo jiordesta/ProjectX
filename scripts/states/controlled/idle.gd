@@ -5,7 +5,8 @@ func Exit():
 	pass
 func Enter():
 	if not entity: return
-	entity.currentLogicState = self
+	entity.updatePlayerProperty('logic_state',self)
+	entity.playAnimation('idle')
 func Update(delta: float):
 	if not entity: return
 	updateInputs()
@@ -13,4 +14,4 @@ func Update(delta: float):
 		Transition.emit(self, 'run')
 func PhysicsUpdate(delta: float):
 	if not entity: return
-	entity.navigate(Vector2.ZERO,delta,Enum.ModifySpeedTypes.STOP,100,20)
+	entity.controlledNavigate(delta,Enum.SPEEDTYPES.STOP,100,20)
